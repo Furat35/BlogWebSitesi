@@ -1,0 +1,13 @@
+﻿@model List<ArticleDto>
+
+<ul>
+    @foreach (var article in Model)
+    {
+        <li>
+            <a asp-controller="Article" asp-action="Index" asp-route-articleId="@article.Id">
+                <h5>@article.Title</h5>
+                <span>@article.CreatedDate</span>
+            </a>
+        </li>
+    }
+</ul>

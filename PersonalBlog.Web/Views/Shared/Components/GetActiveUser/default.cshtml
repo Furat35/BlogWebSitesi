@@ -1,0 +1,17 @@
+﻿@model object
+@using YoutubeBlog.Web.Const
+
+@if (User.IsInRole(RoleConst.SuperAdmin) || User.IsInRole(RoleConst.Admin)){
+    <li class="nav-item">
+    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-link btn">
+        @Model.ToString()
+    </a>
+</li>
+}
+else{
+    <li class="nav-item">
+        <a asp-area="Admin" asp-controller="Auth" asp-action="Login" class="nav-link btn">
+            @Model.ToString()
+        </a>
+    </li>
+}

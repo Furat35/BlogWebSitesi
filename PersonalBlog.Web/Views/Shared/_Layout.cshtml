@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <partial name="/Views/Shared/LayoutPartials/_LayoutPartials/_HeadPartial.cshtml"></partial>
+
+</head>
+
+<body>
+
+
+    <!-- Header Navbar -->
+    <partial name="/Views/Shared/LayoutPartials/_LayoutPartials/_HeaderNavbarPartial.cshtml"></partial>
+
+    <!-- Banner -->
+    <partial name="/Views/Shared/LayoutPartials/_LayoutPartials/_BannerPartial.cshtml"></partial>
+
+    <div style="height:100px;"></div>
+
+    <!-- Main -->
+    @RenderBody()
+
+    <!-- Footer -->
+    <partial name="/Views/Shared/LayoutPartials/_LayoutPartials/_FooterPartial.cshtml"></partial>
+
+    <!-- Script -->
+    <partial name="/Views/Shared/LayoutPartials/_LayoutPartials/_ScriptPartial.cshtml"></partial>
+
+    @RenderSection("Scripts", false) 
+
+    
+</body>
+</html>

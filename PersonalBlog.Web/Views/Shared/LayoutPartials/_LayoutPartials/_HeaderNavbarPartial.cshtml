@@ -1,0 +1,41 @@
+﻿<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index"><h2>Stand Blog<em>.</em></h2></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.linkedin.com/in/f%C4%B1rat-orta%C3%A7-67251656/" target="_blank">
+                            <i style="font-size:22px;" class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Furat35">
+                            <i style="font-size:22px;" class="fa-brands fa-github" target="_blank"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.youtube.com/">
+                            <i style="font-size:22px;" class="fa-brands fa-youtube" target="_blank"></i>
+                        </a>
+                    </li>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a style="border-bottom:1px solid gray;" asp-area="Admin" asp-controller="Auth" asp-action="Login" class="nav-link btn">
+                                Giriş Yap
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        @await Component.InvokeAsync("GetActiveUser")
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

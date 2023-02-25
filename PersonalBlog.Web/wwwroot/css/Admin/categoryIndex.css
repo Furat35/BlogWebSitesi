@@ -1,0 +1,42 @@
+﻿#categoriesTable_previous, #categoriesTable_next {
+    width: 5%;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+span > .paginate_button {
+    padding: 0.75rem;
+}
+
+    span > .paginate_button:hover {
+        background-color: rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+
+.paginate_button.current {
+    font-weight: bolder;
+}
+
+.table-responsive {
+    overflow: hidden;
+}
+
+#categoriesTable_filter input {
+    margin-left: 10px;
+}
+
+#categoriesTable {
+    margin-bottom: 20px;
+}
+
+#categoriesTable_filter input {
+    border-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+select[name="categoriesTable_length"] {
+    border-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}

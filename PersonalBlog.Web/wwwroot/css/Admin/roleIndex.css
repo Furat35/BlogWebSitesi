@@ -1,0 +1,42 @@
+﻿#rolesTable_previous, #rolesTable_next {
+    width: 5%;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+span > .paginate_button {
+    padding: 0.75rem;
+}
+
+    span > .paginate_button:hover {
+        background-color: rgba(0,0,0,0.1);
+        cursor: pointer
+    }
+
+.paginate_button.current {
+    font-weight: bolder;
+}
+
+.table-responsive {
+    overflow: hidden;
+}
+
+#rolesTable_filter input {
+    margin-left: 10px;
+}
+
+#rolesTable {
+    margin-bottom: 20px;
+}
+
+#rolesTable_filter input {
+    border-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+select[name="rolesTable_length"] {
+    border-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}

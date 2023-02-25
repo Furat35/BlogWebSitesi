@@ -1,0 +1,42 @@
+﻿#articlesTable_previous, #articlesTable_next {
+    width: 5%;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+span > .paginate_button {
+    padding: 0.75rem;
+}
+
+    span > .paginate_button:hover {
+        background-color: rgba(0,0,0,0.1);
+        cursor: pointer
+    }
+
+.paginate_button.current {
+    font-weight: bolder;
+}
+
+.table-responsive {
+    overflow: hidden;
+}
+
+#articlesTable_filter input {
+    margin-left: 10px;
+}
+
+#articlesTable {
+    margin-bottom: 20px;
+}
+
+#articlesTable_filter input {
+    border-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+select[name="articlesTable_length"] {
+    border-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}

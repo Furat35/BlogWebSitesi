@@ -1,0 +1,89 @@
+﻿@model UserProfileDto
+@{
+    ViewData["Title"] = "Profil";
+}
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Profil Ayarları /</span> Profilim</h4>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <h5 class="card-header">Profil Bilgilerim</h5>
+                    <form asp-area="Admin" asp-controller="User" asp-action="Profile" method="POST" enctype="multipart/form-data">
+                        <!-- Account -->
+                        <div class="card-body">
+                            <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                <div class="mb-3 form-group col-md-6">
+                                    <label asp-for="Image.FileName" for="photo" class="form-label d-block">Mevcut Resim</label>
+                                    <img style="height:5em;width:5em;" class="mb-3" src="@Model.Image.FileName" alt="@Model.Image.FileName" asp-append-version="true" />
+                                </div>
+                                <div class="button-wrapper">
+                                    <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                                        <span class="d-none d-sm-block">Profil Resmi Seç</span>
+                                        <i class="bx bx-upload d-block d-sm-none"></i>
+                                        <input asp-for="Photo" type="file" id="photo" class="account-file-input" accept="image/*" />
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-0" />
+                        <div class="card-body">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="row">
+                                <div class="mb-3 col-md-6">
+                                    <label asp-for="FirstName" class="form-label">isim</label>
+                                    <input class="form-control"
+                                           asp-for="FirstName"
+                                           type="text"
+                                           autofocus />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label asp-for="LastName" class="form-label">Soyisim</label>
+                                    <input asp-for="LastName" class="form-control" type="text" />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label asp-for="Email" class="form-label">Email Adresi</label>
+                                    <input class="form-control"
+                                           asp-for="Email"
+                                           type="email" />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label asp-for="PhoneNumber" class="form-label">Telefon Numarası</label>
+                                    <input class="form-control"
+                                           asp-for="PhoneNumber"
+                                           type="text" />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label asp-for="CurrentPassword" class="form-label">Mevcut Parola</label>
+                                    <input class="form-control"
+                                           asp-for="CurrentPassword"
+                                           type="text" />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label asp-for="NewPassword" class="form-label">Yeni Parola (Opsiyonel)</label>
+                                    <input class="form-control"
+                                           asp-for="NewPassword"
+                                           type="text" />
+                                </div>
+
+
+                            </div>
+                            <div class="mt-2" style="text-align:center;">
+                                <button type="submit" class="btn btn-primary me-2" style="width: 15%">Profili Güncelle</button>
+                            </div>
+                        </div>
+                        <!-- /Account -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / Content -->
+
+    <div class="content-backdrop fade"></div>
+</div>

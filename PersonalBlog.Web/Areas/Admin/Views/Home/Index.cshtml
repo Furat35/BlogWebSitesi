@@ -1,0 +1,105 @@
+﻿@model List<ArticleDto>
+
+@{
+    ViewData["Title"] = "Gösterge Paneli";
+}
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 order-2 order-md-3 order-lg-2 mb-4">
+                <div class="card">
+                    <div class="row row-bordered g-0">
+                        <div class="col-md-12">
+                            <h5 class="card-header m-0 me-2 pb-3 text-center">@DateTime.Now.Year Yılının Makale Yayınlama Analizi</h5>
+                            <div class="px-2">
+                                <canvas id="myChart" ></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 order-1">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <i class="menu-icon bx bx-paper-plane"></i>
+                                </div>
+                                <span class="fw-semibold d-block mb-1">Toplam Yayınlanan <br /> Makale Sayısı</span>
+                                <h3 class="card-title text-nowrap mb-1" id="totalArticleCount"></h3>
+                                <small class="text-success fw-semibold"></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <i class="menu-icon bx bx-category"></i>
+                                </div>
+                                <span class="fw-semibold d-block mb-1">Toplam Eklenen <br /> Kategori Sayısı</span>
+                                <h3 class="card-title text-nowrap mb-1" id="totalCategoryCount"></h3>
+                                <small class="text-success fw-semibold"></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <i class="menu-icon bx bx-user"></i>
+                                </div>
+                                <span class="fw-semibold d-block mb-1"> Toplam Kullanıcı <br /> Sayısı</span>
+                                <h3 class="card-title text-nowrap mb-1" id="totalUserCount"></h3>
+                                <small class="text-success fw-semibold"></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <i class="menu-icon bx bx-user"></i>
+                                </div>
+                                <span class="fw-semibold d-block mb-1">Aktif Kullanıcı <br /> Sayısı</span>
+                                <h3 class="card-title text-nowrap mb-1" id="totalActiveUserCount"></h3>
+                                <small class="text-success fw-semibold"></small>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / Content -->
+<div class="content-backdrop fade"></div>
+
+
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        var app = app || {};
+        app.Urls = app.Urls || {};
+        app.Urls.totalArticleCountUrl = "@(Url.Action("TotalArticleCount", "Home", new { Area = "Admin" }))";
+        app.Urls.totalCategoryCountUrl = "@(Url.Action("TotalCategoryCount", "Home", new { Area = "Admin" }))";
+        app.Urls.yearlyArticleUrl = "@(Url.Action("YearlyArticleCount", "Home", new { Area = "Admin" }))";
+        app.Urls.totalUserCountUrl = "@(Url.Action("TotalUserCount", "Home", new { Area = "Admin" }))";
+        app.Urls.activeUserCountUrl = "@(Url.Action("ActiveUserCount", "Home", new { Area = "Admin" }))";
+
+    </script>
+
+    <script src="~/js/dashboardIndex.js"></script>
+}

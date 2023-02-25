@@ -1,0 +1,92 @@
+﻿@model List<ArticleDto>
+@{
+    ViewData["Title"] = "Makale Yönetimi";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Makale Yönetimi /</span> Makaleler</h4>
+    <!-- Basic Bootstrap Table -->
+    <div class="card p-3">
+        <div class="table-responsive text-nowrap">
+            @{
+                @if (!User.IsInRole(RoleConst.User))
+                {
+                    <a class="btn btn-success mt-3 mb-3" asp-area="Admin" asp-controller="Article" asp-action="Add">
+                        Makale Ekle <i class="bx bx-plus"></i>
+                    </a>
+                }
+            }
+            <table class="table table-striped" id="articlesTable" width="100%" collspacing="0">
+                <thead>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>Kategori</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Oluşturan</th>
+                        <th>Durum</th>
+                        @if (!User.IsInRole(RoleConst.User))
+                        {
+                            <th>İşlemler</th>
+                        }
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>Kategori</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Oluşturan</th>
+                        <th>Durum</th>
+                        @if (!User.IsInRole(RoleConst.User))
+                        {
+                            <th>İşlemler</th>
+                        }
+                    </tr>
+                </tfoot>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var article in Model)
+                    {
+                        <tr name="@article.Id">
+                            <td>@article.Title</td>
+                            <td>@article.Category.Name</td>
+                            <td>@article.CreatedDate.ToShortDateString()</td>
+                            <td>@article.CreatedBy</td>
+                            <td>@(article.IsDeleted ? "Aktif Değil" : "Aktif")</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" asp-area="Admin" asp-controller="Article" asp-action="Update" asp-route-articleId="@article.Id"><i class="bx bxs-edit"></i></a>
+                                <button class="btn btn-danger btn-sm openDeleteDialog" data-id="@article.Id" data-articletitle="@article.Title" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="bx bxs-minus-circle"></i> </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">UYARI!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal Et</button>
+                <a type="button" href="#" id="sil" class="btn btn-primary">Sil</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Head{
+    <link rel="stylesheet" href="~/css/Admin/articleIndex.css"/>
+}
+
+@section Scripts{
+    <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/articleIndex.js" type="application/ecmascript"></script>
+}
